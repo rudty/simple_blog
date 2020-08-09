@@ -23,3 +23,11 @@ config/database.yml 작성 후
 rails db:migrate
 ```
 자동으로 id bigint(20, AI PK), create_at datetime(6), update_at datetime(6) 추가함 
+이름을 id, create_at, update_at 로 추가 시 중복 에러
+
+
+REST 인증 없이 활용 
+```
+# app/controllers/application_controller.rb (전역, controller 별로 선언시에는 각 controller에 추가) 
+    protect_from_forgery unless: -> { request.format.json? }
+```
