@@ -13,7 +13,11 @@
 
   <div class="field">
     <%= form.label :nickname %>
-    <%= form.text_field :nickname %>
+    <% if user_signed_in? %>
+        <%= form.text_field :nickname, readonly:true, value:current_user.email%>
+	<% else %>
+        <%= form.text_field :nickname %>
+	<% end %>
   </div>
 
   <div class="field">
